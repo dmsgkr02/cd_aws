@@ -4,11 +4,13 @@ on:
   push:
     branches:
     - master
-  workflow_dispatch:
 
 jobs:
   cicd:
     runs-on: ubuntu-latest
     steps:
-    - run: node -v
-    - run: echo hello. world
+    - uses: actions/checkout@v3
+      with:
+        ref: "master"
+    - run: npm install
+    - run: npm run test
